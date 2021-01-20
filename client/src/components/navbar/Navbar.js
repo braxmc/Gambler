@@ -1,7 +1,10 @@
-import React, {useEffect} from 'react'
+import React, {useEffect} from 'react';
 import { AuthConsumer, } from '../../providers/AuthProvider';
-import { Menu, } from 'semantic-ui-react'
-import { Link, withRouter, } from 'react-router-dom'
+import { Link, withRouter, } from 'react-router-dom';
+
+import { NavLink, NavWrap, LogoWrap, Img, NavbarWrap } from './NavbarElements';
+
+import Logo from '../../images/dice.png';
 
 const Navbar = (props) => {
 
@@ -13,18 +16,32 @@ const Navbar = (props) => {
 const {handleLogout} = props.auth;
 if ( props.auth.user === null ) {
   return (
-    <>
-          <Link to='/'>Home</Link>
-          <Link to='/login'>Log In</Link>
-          <Link to='/register'>Register</Link>
-    </>
+    <NavbarWrap>
+    <LogoWrap>
+      <NavLink to='/'>
+        <Img src={Logo} alt='dice logo' />
+      </NavLink>
+    </LogoWrap>
+    <NavWrap>
+      <NavLink to='/'>Home</NavLink>
+      <NavLink to='/login'>Log In</NavLink>
+      <NavLink to='/register'>Register</NavLink>
+    </NavWrap>
+    </NavbarWrap>
   )
 } else {
   return (
-    <>
-      <Link to='/profile'></Link>
-      <Link onClick={ () => handleLogout(props.history)} to='/'>Log Out</Link>
-    </>
+    <NavbarWrap>
+      <LogoWrap>
+        <NavLink to='/'>
+          <Img src={Logo} alt='dice logo' />
+        </NavLink>
+      </LogoWrap>
+      <NavWrap>
+        <NavLink to='/'>Home</NavLink>
+        <NavLink onClick={ () => handleLogout(props.history)} to='/'>Log Out</NavLink>
+      </NavWrap>
+    </NavbarWrap>
   )
 }
 }

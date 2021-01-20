@@ -1,8 +1,11 @@
 import React from 'react';
-import { Header, } from 'semantic-ui-react';
+
+import { HomeWrap, Header } from './HomeElements'
 
 const Home = () => (
-  <Header as="h3" textAlign="center">Devise Auth App</Header>
+  <HomeWrap>
+    <Header>Gambler</Header>
+  </HomeWrap>
 )
 
 export default Home;
